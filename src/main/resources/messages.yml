@@ -1,0 +1,117 @@
+# -------------------------------------------------------------------------
+# TeamsZ Custom Messages File
+# All messages sent to players are configured here.
+# Use '&' for color codes (e.g., &a for light green).
+# Use the {prefix} placeholder to automatically add the plugin's prefix.
+# -------------------------------------------------------------------------
+
+# General Messages
+general:
+  no-permission: '{prefix}&cYou do not have permission for that command.'
+  not-a-player: '{prefix}&cThis command can only be run by a player.'
+  player-offline: '{prefix}&cThe player &e{player}&c is currently offline.'
+  player-not-found: '{prefix}&cCould not find player &e{player}&c.'
+  reloaded: '{prefix}&aThe configuration files have been reloaded.'
+  invalid-arguments: '{prefix}&cInvalid arguments. Usage: &e{usage}'
+  
+# Command-Specific Messages
+command-messages:
+  
+  # /team create <name>
+  create:
+    success: '{prefix}&aYou have successfully created the team &b{team_name}&a!'
+    already-in-team: '{prefix}&cYou are already in a team. Use &e/team leave &cto leave first.'
+    name-too-short: '{prefix}&cThe team name must be at least &e{min_length}&c characters long.'
+    name-too-long: '{prefix}&cThe team name cannot be more than &e{max_length}&c characters long.'
+    name-already-exists: '{prefix}&cA team with the name &e{team_name}&c already exists.'
+    cost-failed: '{prefix}&cYou need &e${cost}&c to create a team.'
+    cooldown: '{prefix}&cYou must wait &e{time}&c before creating another team.'
+    
+  # /team disband
+  disband:
+    success-player: '{prefix}&aYou have disbanded the team &b{team_name}&a.'
+    success-broadcast: '{prefix}&b{team_name} &cwas disbanded by its Owner, &e{player}&c!'
+    not-owner: '{prefix}&cOnly the &e{rank_owner}&c can disband the team.'
+    
+  # /team join <team_name>
+  join:
+    success: '{prefix}&aYou have joined the team &b{team_name}&a!'
+    team-full: '{prefix}&cThe team &e{team_name}&c is full.'
+    no-invite: '{prefix}&cYou have not been invited to the team &e{team_name}&c.'
+    invite-expired: '{prefix}&cYour invite to &e{team_name}&c has expired.'
+    
+  # /team leave
+  leave:
+    success: '{prefix}&aYou have left the team &b{team_name}&a.'
+    not-in-team: '{prefix}&cYou are not currently in a team.'
+    owner-must-disband: '{prefix}&cAs the &e{rank_owner}&c, you must use &e/team disband &cor &e/team transfer &cto leave.'
+    
+  # /team invite <player>
+  invite:
+    sent: '{prefix}&aYou invited &e{target_player}&a to join your team.'
+    received: '{prefix}&aYou have been invited to join &b{team_name}&a by &e{inviter}&a.'
+    prompt: '{prefix}&fType &a/team accept {team_name}&f or &c/team deny {team_name}&f to respond.'
+    already-in-team: '{prefix}&e{target_player}&c is already in a team.'
+    team-full: '{prefix}&cYour team is currently full.'
+
+  # /team kick <player>
+  kick:
+    kicked-by-player: '{prefix}&e{kicked_player}&a has been kicked from the team.'
+    kicked-notification: '{prefix}&cYou have been kicked from &b{team_name}&c by &e{kicker}&c.'
+    target-not-in-team: '{prefix}&cThat player is not in your team.'
+    higher-rank: '{prefix}&cYou cannot kick a player with a rank equal to or higher than yours.'
+
+  # /team home
+  home:
+    teleporting: '{prefix}&aTeleporting to team home in &e{delay} seconds&a...'
+    teleport-cancelled: '{prefix}&cTeleport to team home cancelled. Do not move!'
+    teleport-success: '{prefix}&aYou have arrived at your team home.'
+    not-set: '{prefix}&cYour team home has not been set. Use &e/team sethome&c.'
+    cooldown: '{prefix}&cYou must wait &e{time}&c before teleporting home again.'
+    world-disabled: '{prefix}&cTeam homes are disabled in this world.'
+    
+  # /team sethome
+  sethome:
+    success: '{prefix}&aTeam home has been set to your current location.'
+    not-allowed: '{prefix}&cYou do not have permission to set the team home ({required_rank}+).'
+    
+  # /team pvp
+  pvp:
+    enabled: '{prefix}&aFriendly Fire has been &eENABLED&a for &b{team_name}&a.'
+    disabled: '{prefix}&cFriendly Fire has been &eDISABLED&c for &b{team_name}&c.'
+    
+# Chat Messages
+chat:
+  team-format: '&8[&bTeam Chat&8] &b{team_name} &7| &e{rank_name} &f{player}: &a{message}'
+  ally-format: '&8[&dAlly Chat&8] &d{ally_tag} &7| &e{player}: &f{message}'
+  
+  # When player toggles to team chat
+  toggle-team-chat: '{prefix}&aYou are now speaking in &bTeam Chat&a.'
+  # When player toggles to public chat
+  toggle-public-chat: '{prefix}&aYou are now speaking in &fPublic Chat&a.'
+  
+# Economy Messages
+economy:
+  insufficient-funds: '{prefix}&cYou do not have enough money. You need &e${required}&c.'
+  deposit:
+    success: '{prefix}&aYou deposited &e${amount}&a into the team bank. New balance: &e${new_balance}'
+    invalid-amount: '{prefix}&cPlease enter a valid amount to deposit.'
+    not-enough-money: '{prefix}&cYou do not have &e${amount}&c to deposit.'
+  withdraw:
+    success: '{prefix}&aYou withdrew &e${amount}&a from the team bank. New balance: &e${new_balance}'
+    not-enough-money: '{prefix}&cThe team bank only has &e${current}&c.'
+    not-allowed: '{prefix}&cOnly &e{rank_owner}&c can withdraw from the bank.'
+  balance:
+    self: '{prefix}&aYour team bank balance is &e${balance}&a.'
+    other: '{prefix}&aThe team &b{team_name}&a balance is &e${balance}&a.'
+
+# Rank Placeholder Messages (Used in /team info or other places)
+rank-placeholders:
+  rank-1: '&7Member'
+  rank-2: '&aRecruiter'
+  rank-3: '&bMod'
+  rank-4: '&6Admin'
+  rank-5: '&cOwner'
+
+# Available Placeholders:
+# {prefix}, {player}, {target_player}, {team_name}, {rank_name}, {rank_owner}, {time}, {cost}, {usage}, {amount}, {new_balance}, {required_rank}

@@ -1,0 +1,122 @@
+# -------------------------------------------------------------------------
+# TeamsZ Configuration File
+# This file manages the core settings, rank names, and GUI menus.
+# Color codes use the standard ampersand (&) format.
+# -------------------------------------------------------------------------
+
+# Global Settings (no change)
+global:
+  plugin-prefix: '&8[&bTeamsZ&8] &r'
+  language-file: 'messages.yml'
+  check-for-updates: true
+  
+# Team Limits & Costs
+limits:
+  max-teams-per-player: 1           # Max teams a player can own (-1 for unlimited)
+  max-members-per-team: 10          # Max players a team can have
+  min-team-name-length: 3
+  max-team-name-length: 16
+  creation-cost-economy: 0.0        # <--- UPDATED: Team creation is now FREE
+  disband-cooldown-seconds: 3600
+  allow-name-colors: false
+
+# Feature Toggles (no change)
+features:
+  friendly-fire-enabled: true
+  use-team-pvp-by-default: false
+  home:
+    enabled: true
+    cooldown-seconds: 60
+    teleport-delay-seconds: 3
+    allow-home-in-worlds:
+      - world
+      - world_nether
+  warps:
+    enabled: true
+    max-warps-per-team: 5
+  balance:
+    enabled: true
+    starting-balance: 0.0
+  chat:
+    enable-ally-chat: true
+    default-to-team-chat: false
+
+# Rank Configuration (no change)
+ranks:
+  rank-1-name: 'Member'
+  rank-2-name: 'Recruiter'
+  rank-3-name: 'Mod'
+  rank-4-name: 'Admin'
+  rank-5-name: 'Owner'
+  rank-permissions:
+    INVITE: 2
+    KICK: 3
+    PROMOTE: 4
+    DEMOTE: 4
+    BAN: 4
+    SETHOME: 3
+    SETWARP: 4
+
+---
+
+## 🕹️ GUI Menu Configuration (Updated for Free Creation)
+
+I have updated the lore for the `confirm-button` and `info-item` to reflect that the creation is free.
+
+```yaml
+menu:
+  # This section defines the confirmation GUI that opens when a player
+  # successfully starts the team creation process (e.g., after /team create <name>).
+  creation-confirmation-gui:
+    title: '&8» &6Confirm &b{team_name} &6Creation'
+    rows: 3
+    
+    # Filler item for empty slots
+    filler-item:
+      material: BLACK_STAINED_GLASS_PANE
+      name: ' '
+      
+    # Button to confirm creation
+    confirm-button:
+      material: EMERALD_BLOCK
+      slot: 11
+      name: '&a&lCONFIRM TEAM CREATION'
+      lore:
+        - '&7Clicking this button will finalize'
+        - '&7your team &b{team_name}&7.'
+        - ' '
+        - '&a&lCREATION IS FREE!' # <--- UPDATED
+        - '&a&lCLICK TO CONFIRM'
+      
+      # The command that the plugin will execute internally to finalize creation
+      command: 'TEAMSZ_INTERNAL:FINALIZE_CREATE' 
+      
+    # Button to cancel creation and close the menu
+    cancel-button:
+      material: REDSTONE_BLOCK
+      slot: 15
+      name: '&c&lCANCEL'
+      lore:
+        - '&7Click to close the menu and'
+        - '&7cancel team creation.'
+        - ' '
+        - '&c&lCLICK TO CANCEL'
+      
+      # The command that the plugin will execute internally to cancel
+      command: 'TEAMSZ_INTERNAL:CANCEL_CREATE' 
+
+    # Status/Info Item (Non-clickable)
+    info-item:
+      material: NAME_TAG
+      slot: 13
+      name: '&6&lTEAM DETAILS'
+      lore:
+        - '&7Team Name: &b{team_name}'
+        - '&7Max Members: &e{max_members}'
+        - '&7Cost: &aFREE' # <--- UPDATED
+        - '&7Starting Balance: &e${starting_balance}'
+
+# Placeholder API Configuration (no change)
+placeholders:
+  default-team-name: 'Solo'
+  default-team-color: '&7'
