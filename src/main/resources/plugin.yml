@@ -1,0 +1,69 @@
+name: TeamsZ
+version: '${project.version}'
+main: tw.allenalt.teamsz.TeamsZ
+author: Dev_Allenalt_tw
+api-version: '1.21'
+description: Team and Clan Management Plugin
+website: https://github.com/yourusername/TeamsZ
+
+softdepend: [Vault, PlaceholderAPI]
+
+permissions:
+  teamsz.admin:
+    description: Grants access to all TeamsZ commands
+    default: op
+  teamsz.create:
+    description: Allows creating a team
+    default: true
+  teamsz.join:
+    description: Allows joining teams
+    default: true
+  teamsz.leave:
+    description: Allows leaving teams
+    default: true
+  teamsz.chat:
+    description: Allows using team chat
+    default: true
+  teamsz.home:
+    description: Allows using team home
+    default: true
+  teamsz.warp:
+    description: Allows using team warps
+    default: true
+
+commands:
+  team:
+    description: Main team command
+    aliases: [t, teams, clan]
+    usage: |-
+      §e/team create <name> §7- Create a new team
+      §e/team disband §7- Disband your team
+      §e/team leave §7- Leave your current team
+      §e/team info [team] §7- View team information
+      §e/team list §7- List all teams
+      §e/team top §7- View top teams
+      §e/team invite <player> §7- Invite a player
+      §e/team join <team> §7- Join a team
+      §e/team accept <team> §7- Accept an invitation
+      §e/team decline <team> §7- Decline an invitation
+      §e/team kick <player> §7- Kick a member
+      §e/team promote <player> §7- Promote a member
+      §e/team demote <player> §7- Demote a member
+      §e/team transfer <player> §7- Transfer ownership
+      §e/team sethome §7- Set team home
+      §e/team home §7- Teleport to team home
+      §e/team setwarp <name> §7- Set a team warp
+      §e/team warp <name> §7- Teleport to warp
+      §e/team delwarp <name> §7- Delete a warp
+      §e/team warps §7- List team warps
+      §e/team chat §7- Toggle team chat
+      §e/team rename <name> §7- Rename team
+      §e/team color <color> §7- Change team color
+      §e/team open §7- Toggle open/invite-only
+      §e/team pvp §7- Toggle friendly fire
+      §e/team ally [add/remove] <team> §7- Manage allies
+      §e/team neutral <team> §7- Remove alliance
+  tc:
+    description: Send a team chat message
+    aliases: [teamchat, tchat]
+    usage: §e/tc <message> §7- Send team message
